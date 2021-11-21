@@ -7,7 +7,7 @@ public class SimTalonFXSensorCollection extends TalonFXSensorCollection{
     private final double sensorPos, absSensorPos, sensorVelocity;
     private final double fwdLimitSwitch, revLimitSwitch;
 
-    public TalonFXSensorCollection(final double sensorPos, final double absSensorPos, final double sensorVelocity, final int fwdLimitSwitch, final int revLimitSwitch){
+    public SimTalonFXSensorCollection(final double sensorPos, final double absSensorPos, final double sensorVelocity, final int fwdLimitSwitch, final int revLimitSwitch){
         this.sensorPos = sensorPos;
         this.absSensorPos = absSensorPos;
         this.sensorVelocity = sensorVelocity;
