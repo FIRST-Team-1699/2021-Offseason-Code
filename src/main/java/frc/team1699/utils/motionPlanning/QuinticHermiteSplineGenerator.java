@@ -7,6 +7,7 @@ public class QuinticHermiteSplineGenerator {
     private final double t0, t1, x0, y0, x1, y1, ax0, ay0, ax1, ay1;
     private double vx0, vy0, vx1, vy1, d;
      
+    //TODO Refactor to be a factory
     public QuinticHermiteSplineGenerator(double t0, double t1, double x0, double y0, double x1, double y1, double ax0, double ay0, double ax1, double ay1) {
         this.t0 = t0;
         this.t1 = t1;
