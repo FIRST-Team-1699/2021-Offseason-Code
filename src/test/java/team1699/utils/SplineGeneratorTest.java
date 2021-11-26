@@ -42,7 +42,7 @@ public class SplineGeneratorTest{
     @Test
     public void testSplitCurve(){
         qSplineGenerator.computeConstants();
-        MotionProfile2D profile = new MotionProfile2D(qSplineGenerator, 0.0);
+        MotionProfile2D profile = new MotionProfile2D(qSplineGenerator, 0.0, 0.0);
 
         PrintWriter pw = null;
         try{

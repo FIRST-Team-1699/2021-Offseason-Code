@@ -14,17 +14,18 @@ public class MotionProfile2D{
     private final double kMaxRotationalVelocity;
 
     private List<Point> samplePoints;
-    private List<Vector> goalFowardVectors;
-    private List<Vector> goalRoationalVectors;
+    //TODO Should these be vectors?
+    private List<Double> goalForwardVectors;
+    private List<Double> goalRotationalVectors;
 
     //TODO Add acceleration 
     public MotionProfile2D(final QuinticHermiteSplineGenerator path, final double kMaxForwardVelocity, final double kMaxRotationalVelocity){
         this.path = path;
         this.kMaxForwardVelocity = kMaxForwardVelocity;
-        this.kMaxRotationalVelocity = kMaxRoationalVelocity;
-        this.samplePoints = generateSampleTrajectory();
-        this.goalFowardVectors = new ArrayList<>();
+        this.kMaxRotationalVelocity = kMaxRotationalVelocity;
+        this.goalForwardVectors = new ArrayList<>();
         this.goalRotationalVectors = new ArrayList<>();
+        this.samplePoints = generateSampleTrajectoryPoints();
     }
 
     //TODO Refactor return type to void
@@ -50,11 +51,11 @@ public class MotionProfile2D{
             double yComponent = path.yd(i);
             double nextXComponent = path.xd(i + 1);
             double nextYComponent = path.yd(i + 1);
-            double magnituge = Math.sqrt((xComponent * xComponent) + (yComponent * yComponent));
+            double magnitude = Math.sqrt((xComponent * xComponent) + (yComponent * yComponent));
             double direction = Math.atan(yComponent / xComponent);
             double nextDirection = Math.atan(nextYComponent + nextXComponent);
-            goalForwardVectors.add(magnitude);
-            goalRotaionalVectors.add((nextDirection - direction) / kTimeStep);
+            this.goalForwardVectors.add(magnitude);
+            this.goalRotationalVectors.add((nextDirection - direction) / kTimeStep);
         }
     }
     
@@ -67,16 +68,12 @@ public class MotionProfile2D{
         return path;
     }
 
-    public double getTargetVelocity(){
-        return targetVelocity;
+    public List<Double> getGoalFowardVectors(){
+        return this.goalForwardVectors;
     }
 
-    public List<Vector> getGoalFowardVectors(){
-        return this.goalFowardVectors;
-    }
-
-    public List<Vector> getGoalRotaionalVectors(){
-        return this.goalRoationalVectors;
+    public List<Double> getGoalRotaionalVectors(){
+        return this.goalRotationalVectors;
     }
 
     public static class Point{
