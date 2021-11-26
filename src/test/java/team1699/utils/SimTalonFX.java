@@ -31,4 +31,5 @@ public class SimTalonFX extends TalonFX{
     public double get(){
         return outputVoltage;
     }
+
 }
