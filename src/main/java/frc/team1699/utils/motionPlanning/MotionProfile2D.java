@@ -58,6 +58,15 @@ public class MotionProfile2D{
             this.goalRotationalVectors.add((nextDirection - direction) / kTimeStep);
         }
     }
+
+    public void reservePassSamplePoints(){
+        for(int i = 0; i < this.goalForwardVectors.size(); i++){
+            this.goalFowardVectors.set(i, Math.min(this.goalForwardVectors.get(i), kMaxForwardVelocity));
+        }
+        for(int i = 0; i < this.goalRotationalVectors.size(); i++){
+            this.goalRotationalVectors.set(i, Math.min(this.goalRotationalVectors.get(i), kMaxRotationalVelocity));
+        }
+    }
     
 
     private double getDist(double p1, double p2){
